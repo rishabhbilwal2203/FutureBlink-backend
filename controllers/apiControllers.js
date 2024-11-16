@@ -43,7 +43,8 @@ exports.apiSchedule = async (req, res) => {
     }
 
     // Calculate the scheduled time based on the delay
-    const scheduleTime = new Date(Date.now() + delayInSeconds * 1000);
+    const scheduleTime = new Date(Date.now() + delayInSeconds * 60 * 60 * 1000); // Adds 1 hour in milliseconds
+
 
     // Schedule the email job using Agenda
     await agenda.schedule(scheduleTime, "send cold email", {
